@@ -103,8 +103,9 @@ MBTA DATA
 ----------------------------------------------------------------------------------------------
 */
 
-async function getMbtaRedLineStops () {
-  const url = `https://api-v3.mbta.com/stops?filter[route]=Red`
+async function getMbtaLineStops (routeFilter) {
+  // const url = `https://api-v3.mbta.com/stops?filter[route]=${routeFilter}`
+  const url = `./local_mbta_info/${routeFilter}.json`
   try {
     const response = await fetch(url)
     if (!response.ok) {
@@ -112,14 +113,13 @@ async function getMbtaRedLineStops () {
     }
 
     const jsonResult = await response.json()
-    console.log(jsonResult)
     return jsonResult
   } catch (error) {
     console.error(error.message)
   }
 }
 
-function buildGraphFromStops (jsonResult) {
+function buildNodesFromStops (jsonResult) {
   const graph = new Graph()
   jsonResult.data.forEach(stop => {
     graph.addNode({
@@ -132,8 +132,28 @@ function buildGraphFromStops (jsonResult) {
   return graph
 }
 
-const jsonResult = await getMbtaRedLineStops()
-const mbtaGraph = buildGraphFromStops(jsonResult)
+function buildEdgesFromStops (jsonResult) {}
+
+let jsonResult = await getMbtaLineStops(`redline_stops`)
+const redLineGraph = buildNodesFromStops(jsonResult)
+
+jsonResult = await getMbtaLineStops(`orangeline_stops`)
+const orangeLineGraph = buildNodesFromStops(jsonResult)
+
+jsonResult = await getMbtaLineStops(`blueline_stops`)
+const blueLineGraph = buildNodesFromStops(jsonResult)
+
+jsonResult = await getMbtaLineStops(`greenbline_stops`)
+const greenBLineGraph = buildNodesFromStops(jsonResult)
+
+jsonResult = await getMbtaLineStops(`greencline_stops`)
+const greenCLineGraph = buildNodesFromStops(jsonResult)
+
+jsonResult = await getMbtaLineStops(`greendline_stops`)
+const greenDLineGraph = buildNodesFromStops(jsonResult)
+
+jsonResult = await getMbtaLineStops(`greeneline_stops`)
+const greenELineGraph = buildNodesFromStops(jsonResult)
 
 /*
 ----------------------------------------------------------------------------------------------
@@ -146,43 +166,66 @@ THREE.JS RENDERING
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 
-let scene, camera, renderer
 function setupApp () {
-  scene = new THREE.Scene()
-  scene.background = new THREE.Color('rgb(54, 54, 54)')
-
-  camera = new THREE.PerspectiveCamera(
+  const scene = new THREE.Scene()
+  scene.background = new THREE.Color('rgb(194, 194, 194)')
+  const camera = new THREE.PerspectiveCamera(
     50,
     window.innerWidth / window.innerHeight,
-    1,
+    0.1,
     1000
   )
-  camera.position.set(0, 0, 20)
-  camera.lookAt(0, 0, 0)
-
-  renderer = new THREE.WebGLRenderer({
+  camera.position.set(0, 0, 5)
+  const renderer = new THREE.WebGLRenderer({
     antialias: true
   })
-
   renderer.setSize(window.innerWidth, window.innerHeight)
   document.body.appendChild(renderer.domElement)
-
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.update()
-
   return { renderer, scene, camera }
 }
 
-function addMbtaGraphToScene (graph, scene) {
-  let x = 0
+function buildSphereMesh (color) {
+  const geometry = new THREE.RingGeometry(0.01, 0.02)
+  const material = new THREE.MeshBasicMaterial({ color: color })
+  return new THREE.Mesh(geometry, material)
+}
+
+function calculateCentroidOfGraphs (graphs) {
+  let sum_longitude = 0
+  let sum_latitude = 0
+  let count = 0
+  for (const graph of graphs) {
+    for (const node of graph.nodes) {
+      sum_longitude += node.longitude
+      sum_latitude += node.latitude
+      count += 1
+    }
+  }
+  return {
+    centroid_longitude: sum_longitude / count,
+    centroid_latitude: sum_latitude / count
+  }
+}
+
+function calculateFinalCoordinates (longitude, latitude, centroid) {
+  let x = 10.0 * (longitude - centroid.centroid_longitude)
+  let y = 10.0 * (latitude - centroid.centroid_latitude)
+
+  return { x: x, y: y, z: 0 }
+}
+
+function addMbtaGraphToGroup (graph, nodeGroup, color, centroid) {
   graph.nodes.forEach(node => {
-    const geometry = new THREE.SphereGeometry(0.05)
-    const material = new THREE.MeshBasicMaterial({ color: 0xda291c })
-    const mesh = new THREE.Mesh(geometry, material)
-    const x = (node.longitude - parseInt(node.longitude)) * 20
-    const y = (node.latitude - parseInt(node.latitude)) * 20
-    mesh.position.set(x, y, 0)
-    scene.add(mesh)
+    const mesh = buildSphereMesh(color)
+    const position = calculateFinalCoordinates(
+      node.longitude,
+      node.latitude,
+      centroid
+    )
+    mesh.position.set(position.x, position.y, position.z)
+    nodeGroup.add(mesh)
   })
 }
 
@@ -191,11 +234,38 @@ function render (renderer, scene, camera) {
   requestAnimationFrame(() => render(renderer, scene, camera))
 }
 
-const app = setupApp()
-const randomGraph = Graph.buildRandomGraph(10, 10)
-addMbtaGraphToScene(mbtaGraph, app.scene)
+function main () {
+  const app = setupApp()
 
-requestAnimationFrame(() => render(app.renderer, app.scene, app.camera))
+  const centroid = calculateCentroidOfGraphs([
+    redLineGraph,
+    blueLineGraph,
+    greenBLineGraph,
+    greenCLineGraph,
+    greenDLineGraph,
+    greenELineGraph
+  ])
+
+  const nodeGroup = new THREE.Group()
+
+  addMbtaGraphToGroup(redLineGraph, nodeGroup, 0xda291c, centroid)
+  addMbtaGraphToGroup(orangeLineGraph, nodeGroup, 0xed8b00, centroid)
+  addMbtaGraphToGroup(blueLineGraph, nodeGroup, 0x003da5, centroid)
+  addMbtaGraphToGroup(greenBLineGraph, nodeGroup, 0x00843d, centroid)
+  addMbtaGraphToGroup(greenCLineGraph, nodeGroup, 0x00843d, centroid)
+  addMbtaGraphToGroup(greenDLineGraph, nodeGroup, 0x00843d, centroid)
+  addMbtaGraphToGroup(greenELineGraph, nodeGroup, 0x00843d, centroid)
+
+  app.scene.add(nodeGroup)
+
+  requestAnimationFrame(() => render(app.renderer, app.scene, app.camera))
+}
+main()
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 // function positionNodesInSphereLayout(){
 //     //3d version of positionNodesInCircularLayout
@@ -294,20 +364,3 @@ requestAnimationFrame(() => render(app.renderer, app.scene, app.camera))
 //     }
 //     return graph;
 // }
-
-// // TODO:
-// // 1) API Connectivity
-// // 1a) Stops as graph nodes
-// // 2) Graph layouts
-// // 2a) Force-directed graph layout
-// // 3) Implemented various unimplemented misc functions (lol)
-
-// // ISSUES:
-// // 1) drawEdges() draws duplicate line for each edge:
-// // currently draws node1->node2 AND node2->node1
-// // should only draw node1->node2 OR node2->node1
-// // 2) createRandomGraph leads to infinite loop ;
-
-// // FEATURES?:
-// // 1) live rendering of nodes being ADDED to graph?
-// // see: https://x.com/zzznah/status/2026436980884529594
