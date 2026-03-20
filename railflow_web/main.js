@@ -6,10 +6,6 @@ UTILITY
 ----------------------------------------------------------------------------------------------
 */
 
-/*
-FUNCTION getRandom
-Returns a random float between 'min' and 'max', inclusive
-*/
 function getRandom (min, max) {
   return Math.random() * (max - min) + min
 }
@@ -59,7 +55,7 @@ class Graph {
     console.log(`Edges:`)
     for (const node of this.nodes) {
       for (const connectedNode of this.edges.get(node)) {
-        console.log(`${node} --- ${connectedNode}`)
+        console.log(`${node.name} --- ${connectedNode.name}`)
       }
     }
   }
@@ -103,9 +99,16 @@ MBTA DATA
 ----------------------------------------------------------------------------------------------
 */
 
+const infoText = document.querySelector(`#infoText`)
+const lastUpdateTimeText = document.querySelector(`#lastUpdateTime`)
+let stopCount = 0
+const stopCountText = document.querySelector(`#stopCount`)
+let vehicleCount = 0
+const vehicleCountText = document.querySelector(`#vehicleCount`)
+
 async function getMbtaLineStops (routeFilter) {
   // const url = `https://api-v3.mbta.com/stops?filter[route]=${routeFilter}`
-  const url = `./local_mbta_info/${routeFilter}.json`
+  const url = `./local_mbta_info/stops/${routeFilter}.json`
   try {
     const response = await fetch(url)
     if (!response.ok) {
@@ -123,37 +126,119 @@ function buildNodesFromStops (jsonResult) {
   const graph = new Graph()
   jsonResult.data.forEach(stop => {
     graph.addNode({
-      id: stop.id,
-      name: stop.attributes.name,
+      type: `stop`,
       longitude: stop.attributes.longitude,
-      latitude: stop.attributes.latitude
+      latitude: stop.attributes.latitude,
+      name: stop.attributes.name
     })
+    stopCount++
   })
   return graph
 }
 
-function buildEdgesFromStops (jsonResult) {}
+// buildEdgesBetweenStops: not ideal
+// stops array in api json result happen to preseve route stop order
+// not sure if this is intentional, doesn't *feel* ideal? (might be a nothingburger)
+// api might have some way of indicating stop connection? this works for now
+// also to fix: stops on different routes connecting to each other (see 200 Washington St. stop both on blue and orange route)
+// see: /routes 'direction_destination'? and 'direction_names'?
+function buildEdgesBetweenStops (graph) {
+  const stops = Array.from(graph.nodes)
+  for (let i = 0; i < stops.length - 1; i++) {
+    graph.addEdge(stops[i], stops[i + 1])
+  }
+}
 
-let jsonResult = await getMbtaLineStops(`redline_stops`)
+async function getMbtaLineVehicles (routeFilter) {
+  // const url = `https://api-v3.mbta.com/vehicles?filter[route]=${routeFilter}`
+  const url = `./local_mbta_info/vehicles/${routeFilter}.json`
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`)
+    }
+
+    const jsonResult = await response.json()
+    return jsonResult
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+
+function buildNodesFromVehicles (jsonResult) {
+  const graph = new Graph()
+  jsonResult.data.forEach(vehicle => {
+    graph.addNode({
+      type: `vehicle`,
+      longitude: vehicle.attributes.longitude,
+      latitude: vehicle.attributes.latitude,
+      name: vehicle.id,
+      updated_at: vehicle.attributes.updated_at
+    })
+    lastUpdateTimeText.textContent = `Last update: ${vehicle.attributes.updated_at}`
+    vehicleCount++
+  })
+  return graph
+}
+
+function updateSelectedInfo (node) {
+  switch (node.userData.type) {
+    case `stop`:
+      infoText.textContent = `Longitude: ${node.userData.longitude},
+          Latitude: ${node.userData.latitude},
+          Name: ${node.userData.name},
+          Type: Stop`
+      break
+
+    case `vehicle`:
+      infoText.textContent = `Longitude: ${node.userData.longitude},
+          Latitude: ${node.userData.latitude},
+          Name: ${node.userData.name},
+          Type: Vehicle`
+
+      break
+  }
+}
+
+let jsonResult
+
+jsonResult = await getMbtaLineStops(`Red`)
 const redLineGraph = buildNodesFromStops(jsonResult)
+buildEdgesBetweenStops(redLineGraph)
 
-jsonResult = await getMbtaLineStops(`orangeline_stops`)
+jsonResult = await getMbtaLineVehicles(`Red`)
+const redVehiclesGraph = buildNodesFromVehicles(jsonResult)
+
+jsonResult = await getMbtaLineStops(`Orange`)
 const orangeLineGraph = buildNodesFromStops(jsonResult)
+buildEdgesBetweenStops(orangeLineGraph)
 
-jsonResult = await getMbtaLineStops(`blueline_stops`)
+jsonResult = await getMbtaLineVehicles(`Orange`)
+const orangeVehiclesGraph = buildNodesFromVehicles(jsonResult)
+
+jsonResult = await getMbtaLineStops(`Blue`)
 const blueLineGraph = buildNodesFromStops(jsonResult)
+buildEdgesBetweenStops(blueLineGraph)
 
-jsonResult = await getMbtaLineStops(`greenbline_stops`)
+jsonResult = await getMbtaLineVehicles(`Blue`)
+const blueVehiclesGraph = buildNodesFromVehicles(jsonResult)
+
+jsonResult = await getMbtaLineStops(`Green-B`)
 const greenBLineGraph = buildNodesFromStops(jsonResult)
+buildEdgesBetweenStops(greenBLineGraph)
 
-jsonResult = await getMbtaLineStops(`greencline_stops`)
+jsonResult = await getMbtaLineVehicles(`Green-B`)
+const greenBVehiclesGraph = buildNodesFromVehicles(jsonResult)
+
+jsonResult = await getMbtaLineStops(`Green-C`)
 const greenCLineGraph = buildNodesFromStops(jsonResult)
+buildEdgesBetweenStops(greenCLineGraph)
 
-jsonResult = await getMbtaLineStops(`greendline_stops`)
-const greenDLineGraph = buildNodesFromStops(jsonResult)
+jsonResult = await getMbtaLineVehicles(`Green-C`)
+const greenCVehiclesGraph = buildNodesFromVehicles(jsonResult)
 
-jsonResult = await getMbtaLineStops(`greeneline_stops`)
-const greenELineGraph = buildNodesFromStops(jsonResult)
+stopCountText.textContent = `${stopCount} stops`
+vehicleCountText.textContent = `${vehicleCount} vehicles`
 
 /*
 ----------------------------------------------------------------------------------------------
@@ -166,19 +251,55 @@ THREE.JS RENDERING
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 
-function setupApp () {
+class PickHelper {
+  constructor () {
+    this.raycaster = new THREE.Raycaster()
+    this.raycaster.params.Line.threshold = 0.0001
+    this.pickedObject = null
+    this.pickedObjectSavedColor = 0
+  }
+  pick (normalizedPosition, scene, camera) {
+    if (this.pickedObject) {
+      this.pickedObject.material.color.setHex(this.pickedObjectSavedColor)
+      this.pickedObject = null
+    }
+
+    this.raycaster.setFromCamera(normalizedPosition, camera)
+    const intersects = this.raycaster.intersectObjects(scene.children)
+    if (intersects.length) {
+      this.pickedObject = intersects[0].object
+      this.pickedObjectSavedColor = this.pickedObject.material.color.getHex()
+      this.pickedObject.material.color.setHex(0xffffff)
+      updateSelectedInfo(this.pickedObject)
+    }
+  }
+}
+
+const pickHelper = new PickHelper()
+const pickPosition = { x: -100000, y: -100000 }
+
+function setPickPosition (event, canvas) {
+  const rect = canvas.getBoundingClientRect()
+  pickPosition.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+  pickPosition.y = ((event.clientY - rect.top) / rect.height) * -2 + 1
+}
+
+function clearPickPosition () {
+  pickPosition.x = -100000
+  pickPosition.y = -100000
+}
+
+function initializeApp () {
   const scene = new THREE.Scene()
-  scene.background = new THREE.Color('rgb(194, 194, 194)')
+  scene.background = new THREE.Color('rgb(0, 0, 0)')
   const camera = new THREE.PerspectiveCamera(
     50,
     window.innerWidth / window.innerHeight,
     0.1,
-    1000
+    100
   )
-  camera.position.set(0, 0, 5)
-  const renderer = new THREE.WebGLRenderer({
-    antialias: true
-  })
+  camera.position.set(0, 0, 3)
+  const renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setSize(window.innerWidth, window.innerHeight)
   document.body.appendChild(renderer.domElement)
   const controls = new OrbitControls(camera, renderer.domElement)
@@ -186,181 +307,142 @@ function setupApp () {
   return { renderer, scene, camera }
 }
 
-function buildSphereMesh (color) {
-  const geometry = new THREE.RingGeometry(0.01, 0.02)
-  const material = new THREE.MeshBasicMaterial({ color: color })
+function buildStopMesh (color) {
+  const material = new THREE.MeshBasicMaterial({
+    color: color
+  })
+  const geometry = new THREE.SphereGeometry(0.01)
   return new THREE.Mesh(geometry, material)
 }
 
+function buildVehicleMesh (color) {
+  const INNER_RADIUS = 0.0
+  const OUTER_RADIUS = 0.01
+  const THETA_SEGMENTS = 3
+  const material = new THREE.MeshBasicMaterial({ color: color })
+  const geometry = new THREE.RingGeometry(
+    INNER_RADIUS,
+    OUTER_RADIUS,
+    THETA_SEGMENTS
+  )
+  return new THREE.Mesh(geometry, material)
+}
+
+function buildEdgeLine (color, position1, position2) {
+  const material = new THREE.MeshBasicMaterial({
+    color: color
+  })
+  const points = []
+  points.push(new THREE.Vector3(position1.x, position1.y, 0))
+  points.push(new THREE.Vector3(position2.x, position2.y, 0))
+  const geometry = new THREE.BufferGeometry().setFromPoints(points)
+  return new THREE.Line(geometry, material)
+}
+
 function calculateCentroidOfGraphs (graphs) {
-  let sum_longitude = 0
-  let sum_latitude = 0
+  let sumLongitude = 0
+  let sumLatitude = 0
   let count = 0
-  for (const graph of graphs) {
-    for (const node of graph.nodes) {
-      sum_longitude += node.longitude
-      sum_latitude += node.latitude
-      count += 1
-    }
-  }
+
+  graphs.forEach(graph => {
+    graph.nodes.forEach(node => {
+      sumLongitude += node.longitude
+      sumLatitude += node.latitude
+      count++
+    })
+  })
+
   return {
-    centroid_longitude: sum_longitude / count,
-    centroid_latitude: sum_latitude / count
+    centroidLongitude: sumLongitude / count,
+    centroidLatitude: sumLatitude / count
   }
 }
 
 function calculateFinalCoordinates (longitude, latitude, centroid) {
-  let x = 10.0 * (longitude - centroid.centroid_longitude)
-  let y = 10.0 * (latitude - centroid.centroid_latitude)
+  const MAP_SCALE = 10.0
+  let x = MAP_SCALE * (longitude - centroid.centroidLongitude)
+  let y = MAP_SCALE * (latitude - centroid.centroidLatitude)
+  let z = 0
 
-  return { x: x, y: y, z: 0 }
+  return { x: x, y: y, z: z }
 }
 
-function addMbtaGraphToGroup (graph, nodeGroup, color, centroid) {
+function drawStopGraph (graph, scene, color, centroid) {
   graph.nodes.forEach(node => {
-    const mesh = buildSphereMesh(color)
     const position = calculateFinalCoordinates(
       node.longitude,
       node.latitude,
       centroid
     )
+    const mesh = buildStopMesh(color)
+    mesh.userData = node
     mesh.position.set(position.x, position.y, position.z)
-    nodeGroup.add(mesh)
+    scene.add(mesh)
+
+    graph.edges.get(node).forEach(connectedNode => {
+      const connectedNodePosition = calculateFinalCoordinates(
+        connectedNode.longitude,
+        connectedNode.latitude,
+        centroid
+      )
+      const line = buildEdgeLine(color, position, connectedNodePosition)
+      scene.add(line)
+    })
+  })
+}
+
+function drawVehicleGraph (graph, scene, color, centroid) {
+  graph.nodes.forEach(node => {
+    const position = calculateFinalCoordinates(
+      node.longitude,
+      node.latitude,
+      centroid
+    )
+    const mesh = buildVehicleMesh(color)
+    mesh.userData = node
+    mesh.position.set(position.x, position.y, position.z)
+    scene.add(mesh)
   })
 }
 
 function render (renderer, scene, camera) {
   renderer.render(scene, camera)
+  pickHelper.pick(pickPosition, scene, camera)
   requestAnimationFrame(() => render(renderer, scene, camera))
 }
 
 function main () {
-  const app = setupApp()
+  const app = initializeApp()
+
+  window.addEventListener('mousemove', e =>
+    setPickPosition(e, app.renderer.domElement)
+  )
+  window.addEventListener('mouseout', clearPickPosition)
+  window.addEventListener('mouseleave', clearPickPosition)
 
   const centroid = calculateCentroidOfGraphs([
     redLineGraph,
+    orangeLineGraph,
     blueLineGraph,
     greenBLineGraph,
-    greenCLineGraph,
-    greenDLineGraph,
-    greenELineGraph
+    greenCLineGraph
   ])
 
-  const nodeGroup = new THREE.Group()
+  drawStopGraph(redLineGraph, app.scene, 0xda291c, centroid)
+  drawVehicleGraph(redVehiclesGraph, app.scene, 0xda291c, centroid)
 
-  addMbtaGraphToGroup(redLineGraph, nodeGroup, 0xda291c, centroid)
-  addMbtaGraphToGroup(orangeLineGraph, nodeGroup, 0xed8b00, centroid)
-  addMbtaGraphToGroup(blueLineGraph, nodeGroup, 0x003da5, centroid)
-  addMbtaGraphToGroup(greenBLineGraph, nodeGroup, 0x00843d, centroid)
-  addMbtaGraphToGroup(greenCLineGraph, nodeGroup, 0x00843d, centroid)
-  addMbtaGraphToGroup(greenDLineGraph, nodeGroup, 0x00843d, centroid)
-  addMbtaGraphToGroup(greenELineGraph, nodeGroup, 0x00843d, centroid)
+  drawStopGraph(orangeLineGraph, app.scene, 0xed8b00, centroid)
+  drawVehicleGraph(orangeVehiclesGraph, app.scene, 0xed8b00, centroid)
 
-  app.scene.add(nodeGroup)
+  drawStopGraph(blueLineGraph, app.scene, 0x003da5, centroid)
+  drawVehicleGraph(blueVehiclesGraph, app.scene, 0x003da5, centroid)
+
+  drawStopGraph(greenBLineGraph, app.scene, `rgb(0, 255, 60)`, centroid)
+  drawVehicleGraph(greenBVehiclesGraph, app.scene, `rgb(0, 255, 60)`, centroid)
+
+  drawStopGraph(greenCLineGraph, app.scene, `rgb(70, 132, 50)`, centroid)
+  drawVehicleGraph(greenCVehiclesGraph, app.scene, `rgb(70, 132, 50)`, centroid)
 
   requestAnimationFrame(() => render(app.renderer, app.scene, app.camera))
 }
 main()
-//////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-// function positionNodesInSphereLayout(){
-//     //3d version of positionNodesInCircularLayout
-// }
-
-// function positionNodesInCylindricalLayout(minRange, maxRange){
-//     //lazy function, just initializes spheres to random layout,
-//     //then repositions x and y coordinates to create a sphere
-//     //minRange and maxRange determine negative z and positive z ranges
-//     positionNodesInRandomLayout(minRange, maxRange);
-//     positionNodesInCircularLayout();
-// }
-
-// function positionNodesIn2dGridLayout(width, depth){
-//     //2d grid consists of rows, cols
-//     //doesnt have to be, can be rectangle
-//     //with 16 nodes:
-//     //4 rows, 4 cols
-//     //with 9 nodes:
-//     //3 rows, 3 cols
-//     //how to decide rows/cols w rectangle?
-// }
-
-// function positionNodesIn3dGridLayout(width, depth, height){
-//     //3d grid consists of rows, cols, depth/slices
-// }
-
-// addNode(node) {
-//     if (!this.nodes.includes(node)) {
-//         this.nodes.push(node);
-//         this.edges.set(node, []);
-//     }
-//     else {
-//         console.error(`Duplicate node <id:${node.id} value:${node.value}> not added to graph`);
-//     }
-// }
-// addEdge(node1, node2) {
-//     if (!this.edges.get(node1).includes(node2) && !this.edges.get(node2).includes(node1)) {
-//         this.edges.get(node1).push(node2);
-//         this.edges.get(node2).push(node1);
-//     }
-//     else {
-//         console.error(`Duplicate edge from <id:${node1.id} value:${node1.value}> to <id:${node2.id} value:${node2.value}>`)
-//     }
-// }
-// printGraph() {
-//     console.log("Connected nodes:");
-//     for (const node of this.nodes) {
-//         for (const connectedNode of this.edges.get(node)) {
-//             console.log(`${node.id} --- ${connectedNode.id}`);
-//         }
-//     }
-//     console.log("Isolated nodes:");
-//     for (const node of this.nodes) {
-//         if (this.edges.get(node).length === 0) {
-//             console.log(`${node.id}`);
-//         }
-//     }
-// }
-// printGraphStats(){
-//     console.log(`Number of nodes: ${this.nodes.length}`);
-//     let numEdges = 0;
-//     this.edges.forEach(element =>{
-//         numEdges += element.length;
-//     })
-//     console.log(`Number of edges: ${numEdges / 2}`);
-// }
-// static createRandomGraph(numNodes, numEdges) {
-//     // max numEdges = n choose 2, or numNodes(numNodes - 1)/2
-//     if (numEdges > (numNodes * (numNodes - 1)) / 2) {
-//         console.error(`${numEdges} edges is too many for a graph of ${numNodes} nodes.\n
-//             Maximum number of edges is n choose 2, or numNodes(numNodes - 1) / 2.`)
-//         return;
-//     }
-//     const graph = new Graph();
-//     for (let i = 0; i < numNodes; i++) {
-//         const node = new Node(i);
-//         graph.addNode(node);
-//     }
-
-//     let addedEdges = 0;
-//     while(addedEdges < numEdges){
-//         const node1 = graph.nodes[Math.floor(getRandom(0, numNodes))];
-//         const node2 = graph.nodes[Math.floor(getRandom(0, numNodes))];
-
-//         if (node1 === node2) {
-//             continue;
-//         }
-//         else if (graph.edges.get(node1).includes(node2)) {
-//             continue;
-//         }
-//         else{
-//             graph.addEdge(node1, node2);
-//             addedEdges++;
-//         }
-//     }
-//     return graph;
-// }

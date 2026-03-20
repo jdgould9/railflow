@@ -1,0 +1,871 @@
+{
+    "data": [
+        {
+            "attributes": {
+                "bearing": 65,
+                "carriages": [
+                    {
+                        "label": "0720",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0721",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0747",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0746",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0772",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0773",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 60,
+                "direction_id": 1,
+                "label": "0720",
+                "latitude": 42.37968,
+                "longitude": -71.02276,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:09-04:00"
+            },
+            "id": "B-54888E0C",
+            "links": {
+                "self": "/vehicles/B-54888E0C"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70050",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360583",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 215,
+                "carriages": [
+                    {
+                        "label": "0711",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0710",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0729",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0728",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0715",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0714",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 70,
+                "direction_id": 0,
+                "label": "0711",
+                "latitude": 42.36923,
+                "longitude": -71.03944,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:23-04:00"
+            },
+            "id": "B-54888DE4",
+            "links": {
+                "self": "/vehicles/B-54888DE4"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70045",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360633",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 35,
+                "carriages": [
+                    {
+                        "label": "0742",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0743",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0702",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0703",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0740",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0741",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 80,
+                "direction_id": 1,
+                "label": "0742",
+                "latitude": 42.39066,
+                "longitude": -70.99699,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:09-04:00"
+            },
+            "id": "B-54888D95",
+            "links": {
+                "self": "/vehicles/B-54888D95"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70054",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360576",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 170,
+                "carriages": [
+                    {
+                        "label": "0717",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0716",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0778",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0779",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0761",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0760",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 10,
+                "direction_id": 0,
+                "label": "0717",
+                "latitude": 42.40776,
+                "longitude": -70.99253,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:08:51-04:00"
+            },
+            "id": "B-54888D71",
+            "links": {
+                "self": "/vehicles/B-54888D71"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70057",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360650",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 150,
+                "carriages": [
+                    {
+                        "label": "0751",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0750",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0733",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0732",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0735",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0734",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 10,
+                "direction_id": 1,
+                "label": "0751",
+                "latitude": 42.35949,
+                "longitude": -71.05969,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:03-04:00"
+            },
+            "id": "B-54888D56",
+            "links": {
+                "self": "/vehicles/B-54888D56"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70040",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360599",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 135,
+                "carriages": [
+                    {
+                        "label": "0731",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0730",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0793",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0792",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0727",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0726",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "IN_TRANSIT_TO",
+                "current_stop_sequence": 1,
+                "direction_id": 1,
+                "label": "0731",
+                "latitude": 42.36122,
+                "longitude": -71.0631,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:20-04:00"
+            },
+            "id": "B-54888D13",
+            "links": {
+                "self": "/vehicles/B-54888D13"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70038",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360608",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 235,
+                "carriages": [
+                    {
+                        "label": "0786",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0787",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0748",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0749",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0766",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0767",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "IN_TRANSIT_TO",
+                "current_stop_sequence": 50,
+                "direction_id": 0,
+                "label": "0786",
+                "latitude": 42.38569,
+                "longitude": -71.00851,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:22-04:00"
+            },
+            "id": "B-54888B97",
+            "links": {
+                "self": "/vehicles/B-54888B97"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70049",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360641",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 275,
+                "carriages": [
+                    {
+                        "label": "0771",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0770",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0788",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0789",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0718",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0719",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 90,
+                "direction_id": 0,
+                "label": "0771",
+                "latitude": 42.35889,
+                "longitude": -71.0574,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:09:03-04:00"
+            },
+            "id": "B-54888B8A",
+            "links": {
+                "self": "/vehicles/B-54888B8A"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70041",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360624",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 320,
+                "carriages": [
+                    {
+                        "label": "0713",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0712",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0764",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0765",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0791",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0790",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "INCOMING_AT",
+                "current_stop_sequence": 110,
+                "direction_id": 0,
+                "label": "0713",
+                "latitude": 42.36013,
+                "longitude": -71.06024,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:07:37-04:00"
+            },
+            "id": "B-54888B83",
+            "links": {
+                "self": "/vehicles/B-54888B83"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70838",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360615",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 95,
+                "carriages": [
+                    {
+                        "label": "0783",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0782",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0756",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0757",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0769",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0768",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "STOPPED_AT",
+                "current_stop_sequence": 20,
+                "direction_id": 1,
+                "label": "0783",
+                "latitude": 42.35888,
+                "longitude": -71.05739,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:08:20-04:00"
+            },
+            "id": "B-54888B7E",
+            "links": {
+                "self": "/vehicles/B-54888B7E"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70042",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360591",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 350,
+                "carriages": [
+                    {
+                        "label": "0705",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0704",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0753",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0752",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0777",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0776",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "INCOMING_AT",
+                "current_stop_sequence": 100,
+                "direction_id": 1,
+                "label": "0705",
+                "latitude": 42.40269,
+                "longitude": -70.99175,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:08:46-04:00"
+            },
+            "id": "B-54888B6F",
+            "links": {
+                "self": "/vehicles/B-54888B6F"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70058",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360664",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        },
+        {
+            "attributes": {
+                "bearing": 200,
+                "carriages": [
+                    {
+                        "label": "0737",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0736",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0708",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0709",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0701",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    },
+                    {
+                        "label": "0700",
+                        "occupancy_percentage": null,
+                        "occupancy_status": "NO_DATA_AVAILABLE"
+                    }
+                ],
+                "current_status": "IN_TRANSIT_TO",
+                "current_stop_sequence": 1,
+                "direction_id": 0,
+                "label": "0700",
+                "latitude": 42.41576,
+                "longitude": -70.99041,
+                "occupancy_status": null,
+                "revenue": "REVENUE",
+                "speed": null,
+                "updated_at": "2026-03-18T17:07:47-04:00"
+            },
+            "id": "B-54888B6E",
+            "links": {
+                "self": "/vehicles/B-54888B6E"
+            },
+            "relationships": {
+                "route": {
+                    "data": {
+                        "id": "Blue",
+                        "type": "route"
+                    }
+                },
+                "stop": {
+                    "data": {
+                        "id": "70059",
+                        "type": "stop"
+                    }
+                },
+                "trip": {
+                    "data": {
+                        "id": "74360657",
+                        "type": "trip"
+                    }
+                }
+            },
+            "type": "vehicle"
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}
