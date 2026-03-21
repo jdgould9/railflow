@@ -62,7 +62,8 @@ class Graph {
   static buildRandomGraph (numNodes, numEdges) {
     if (numEdges > (numNodes * (numNodes - 1)) / 2) {
       console.error(
-        `${numEdges} edges is too many for a graph of ${numNodes} nodes.\nMaximum number of edges is n choose 2, or numNodes(numNodes - 1) / 2.`
+        `${numEdges} edges is too many for a graph of ${numNodes} nodes.
+        \nMaximum number of edges is n choose 2, or numNodes(numNodes - 1) / 2.`
       )
       return
     }
@@ -99,87 +100,15 @@ MBTA DATA
 ----------------------------------------------------------------------------------------------
 */
 
+/*
+INFO
+*/
 const infoText = document.querySelector(`#infoText`)
 const lastUpdateTimeText = document.querySelector(`#lastUpdateTime`)
 let stopCount = 0
 const stopCountText = document.querySelector(`#stopCount`)
 let vehicleCount = 0
 const vehicleCountText = document.querySelector(`#vehicleCount`)
-
-async function getMbtaLineStops (routeFilter) {
-  // const url = `https://api-v3.mbta.com/stops?filter[route]=${routeFilter}`
-  const url = `./local_mbta_info/stops/${routeFilter}.json`
-  try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`)
-    }
-
-    const jsonResult = await response.json()
-    return jsonResult
-  } catch (error) {
-    console.error(error.message)
-  }
-}
-
-function buildNodesFromStops (jsonResult) {
-  const graph = new Graph()
-  jsonResult.data.forEach(stop => {
-    graph.addNode({
-      type: `stop`,
-      longitude: stop.attributes.longitude,
-      latitude: stop.attributes.latitude,
-      name: stop.attributes.name
-    })
-    stopCount++
-  })
-  return graph
-}
-
-// buildEdgesBetweenStops: not ideal
-// stops array in api json result happen to preseve route stop order
-// not sure if this is intentional, doesn't *feel* ideal? (might be a nothingburger)
-// api might have some way of indicating stop connection? this works for now
-// also to fix: stops on different routes connecting to each other (see 200 Washington St. stop both on blue and orange route)
-// see: /routes 'direction_destination'? and 'direction_names'?
-function buildEdgesBetweenStops (graph) {
-  const stops = Array.from(graph.nodes)
-  for (let i = 0; i < stops.length - 1; i++) {
-    graph.addEdge(stops[i], stops[i + 1])
-  }
-}
-
-async function getMbtaLineVehicles (routeFilter) {
-  // const url = `https://api-v3.mbta.com/vehicles?filter[route]=${routeFilter}`
-  const url = `./local_mbta_info/vehicles/${routeFilter}.json`
-  try {
-    const response = await fetch(url)
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`)
-    }
-
-    const jsonResult = await response.json()
-    return jsonResult
-  } catch (error) {
-    console.error(error.message)
-  }
-}
-
-function buildNodesFromVehicles (jsonResult) {
-  const graph = new Graph()
-  jsonResult.data.forEach(vehicle => {
-    graph.addNode({
-      type: `vehicle`,
-      longitude: vehicle.attributes.longitude,
-      latitude: vehicle.attributes.latitude,
-      name: vehicle.id,
-      updated_at: vehicle.attributes.updated_at
-    })
-    lastUpdateTimeText.textContent = `Last update: ${vehicle.attributes.updated_at}`
-    vehicleCount++
-  })
-  return graph
-}
 
 function updateSelectedInfo (node) {
   switch (node.userData.type) {
@@ -200,45 +129,119 @@ function updateSelectedInfo (node) {
   }
 }
 
-let jsonResult
+/*
+STOPS
+*/
+async function getMbtaStopInfo (route) {
+  // const url = `https://api-v3.mbta.com/stops?filter[route]=${routeFilter}`
+  const url = `./local_mbta_info/stops/${route}.json`
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`)
+    }
+    const jsonResult = await response.json()
+    return jsonResult
+  } catch (error) {
+    console.error(error.message)
+  }
+}
 
-jsonResult = await getMbtaLineStops(`Red`)
-const redLineGraph = buildNodesFromStops(jsonResult)
-buildEdgesBetweenStops(redLineGraph)
+// buildEdgesBetweenStops: not ideal
+// stops array in api json result happen to preseve route stop order
+// not sure if this is intentional, doesn't *feel* ideal? (might be a nothingburger)
+// api might have some way of indicating stop connection? this works for now
+// also to fix: stops on different routes connecting to each other (see 200 Washington St. stop both on blue and orange route)
+// see: /routes 'direction_destination'? and 'direction_names'?
+function buildNodesFromStops (jsonResult, graph) {
+  jsonResult.data.forEach(stop => {
+    graph.addNode({
+      type: `stop`,
+      longitude: stop.attributes.longitude,
+      latitude: stop.attributes.latitude
+    })
+    stopCount++
+  })
+}
 
-jsonResult = await getMbtaLineVehicles(`Red`)
-const redVehiclesGraph = buildNodesFromVehicles(jsonResult)
+function buildEdgesBetweenStops (graph) {
+  const stops = Array.from(graph.nodes)
+  for (let i = 0; i < stops.length - 1; i++) {
+    graph.addEdge(stops[i], stops[i + 1])
+  }
+}
 
-jsonResult = await getMbtaLineStops(`Orange`)
-const orangeLineGraph = buildNodesFromStops(jsonResult)
-buildEdgesBetweenStops(orangeLineGraph)
+async function buildStopGraph (route) {
+  const stopGraph = new Graph()
+  const jsonResult = await getMbtaStopInfo(route)
+  buildNodesFromStops(jsonResult, stopGraph)
+  buildEdgesBetweenStops(stopGraph)
+  return stopGraph
+}
 
-jsonResult = await getMbtaLineVehicles(`Orange`)
-const orangeVehiclesGraph = buildNodesFromVehicles(jsonResult)
+/*
+VEHICLES
+*/
+async function getMbtaVehicleInfo (route) {
+  // const url = `https://api-v3.mbta.com/vehicles?filter[route]=${routeFilter}`
+  const url = `./local_mbta_info/vehicles/${route}.json`
+  try {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`)
+    }
+    const jsonResult = await response.json()
+    return jsonResult
+  } catch (error) {
+    console.error(error.message)
+  }
+}
 
-jsonResult = await getMbtaLineStops(`Blue`)
-const blueLineGraph = buildNodesFromStops(jsonResult)
-buildEdgesBetweenStops(blueLineGraph)
+function buildNodesFromVehicles (jsonResult, graph) {
+  jsonResult.data.forEach(vehicle => {
+    graph.addNode({
+      type: `vehicle`,
+      longitude: vehicle.attributes.longitude,
+      latitude: vehicle.attributes.latitude
+    })
+    lastUpdateTimeText.textContent = `Last update: ${vehicle.attributes.updated_at}`
+    vehicleCount++
+  })
+}
 
-jsonResult = await getMbtaLineVehicles(`Blue`)
-const blueVehiclesGraph = buildNodesFromVehicles(jsonResult)
+async function buildVehicleGraph (route) {
+  const vehicleGraph = new Graph()
+  const jsonResult = await getMbtaVehicleInfo(route)
+  buildNodesFromVehicles(jsonResult, vehicleGraph)
+  return vehicleGraph
+}
 
-jsonResult = await getMbtaLineStops(`Green-B`)
-const greenBLineGraph = buildNodesFromStops(jsonResult)
-buildEdgesBetweenStops(greenBLineGraph)
+/*
+MAIN
+*/
+async function initMbta (routeFilters) {
+  const mbtaGraphs = {
+    stopGraphs: [],
+    vehicleGraphs: []
+  }
+  for (const route of routeFilters) {
+    const stopGraph = await buildStopGraph(route)
+    const vehicleGraph = await buildVehicleGraph(route)
+    mbtaGraphs.stopGraphs.push(stopGraph)
+    mbtaGraphs.vehicleGraphs.push(vehicleGraph)
+  }
+  return mbtaGraphs
+}
 
-jsonResult = await getMbtaLineVehicles(`Green-B`)
-const greenBVehiclesGraph = buildNodesFromVehicles(jsonResult)
-
-jsonResult = await getMbtaLineStops(`Green-C`)
-const greenCLineGraph = buildNodesFromStops(jsonResult)
-buildEdgesBetweenStops(greenCLineGraph)
-
-jsonResult = await getMbtaLineVehicles(`Green-C`)
-const greenCVehiclesGraph = buildNodesFromVehicles(jsonResult)
-
-stopCountText.textContent = `${stopCount} stops`
-vehicleCountText.textContent = `${vehicleCount} vehicles`
+const mbtaGraphs = await initMbta([
+  `Red`,
+  `Orange`,
+  `Blue`,
+  `Green-B`,
+  `Green-C`,
+  `Green-D`,
+  `Green-E`
+])
 
 /*
 ----------------------------------------------------------------------------------------------
@@ -247,10 +250,12 @@ THREE.JS RENDERING
 ----------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------
 */
-
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 
+/*
+PICKING
+*/
 class PickHelper {
   constructor () {
     this.raycaster = new THREE.Raycaster()
@@ -289,7 +294,10 @@ function clearPickPosition () {
   pickPosition.y = -100000
 }
 
-function initializeApp () {
+/*
+APP
+*/
+function initApp () {
   const scene = new THREE.Scene()
   scene.background = new THREE.Color('rgb(0, 0, 0)')
   const camera = new THREE.PerspectiveCamera(
@@ -298,7 +306,7 @@ function initializeApp () {
     0.1,
     100
   )
-  camera.position.set(0, 0, 3)
+  camera.position.set(0, 0, 1)
   const renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setSize(window.innerWidth, window.innerHeight)
   document.body.appendChild(renderer.domElement)
@@ -307,25 +315,29 @@ function initializeApp () {
   return { renderer, scene, camera }
 }
 
+function render (renderer, scene, camera) {
+  renderer.render(scene, camera)
+  pickHelper.pick(pickPosition, scene, camera)
+  requestAnimationFrame(() => render(renderer, scene, camera))
+}
+
+/*
+GRAPH RENDERING
+*/
 function buildStopMesh (color) {
   const material = new THREE.MeshBasicMaterial({
     color: color
   })
   const geometry = new THREE.SphereGeometry(0.01)
-  return new THREE.Mesh(geometry, material)
+  const mesh = new THREE.Mesh(geometry, material)
+  return mesh
 }
 
 function buildVehicleMesh (color) {
-  const INNER_RADIUS = 0.0
-  const OUTER_RADIUS = 0.01
-  const THETA_SEGMENTS = 3
   const material = new THREE.MeshBasicMaterial({ color: color })
-  const geometry = new THREE.RingGeometry(
-    INNER_RADIUS,
-    OUTER_RADIUS,
-    THETA_SEGMENTS
-  )
-  return new THREE.Mesh(geometry, material)
+  const geometry = new THREE.ConeGeometry(0.01, 0.015, 3)
+  const mesh = new THREE.Mesh(geometry, material)
+  return mesh
 }
 
 function buildEdgeLine (color, position1, position2) {
@@ -339,7 +351,7 @@ function buildEdgeLine (color, position1, position2) {
   return new THREE.Line(geometry, material)
 }
 
-function calculateCentroidOfGraphs (graphs) {
+function calculateCentroid (graphs) {
   let sumLongitude = 0
   let sumLatitude = 0
   let count = 0
@@ -358,7 +370,7 @@ function calculateCentroidOfGraphs (graphs) {
   }
 }
 
-function calculateFinalCoordinates (longitude, latitude, centroid) {
+function calculateProjectedCoordinates (longitude, latitude, centroid) {
   const MAP_SCALE = 10.0
   let x = MAP_SCALE * (longitude - centroid.centroidLongitude)
   let y = MAP_SCALE * (latitude - centroid.centroidLatitude)
@@ -367,82 +379,64 @@ function calculateFinalCoordinates (longitude, latitude, centroid) {
   return { x: x, y: y, z: z }
 }
 
-function drawStopGraph (graph, scene, color, centroid) {
-  graph.nodes.forEach(node => {
-    const position = calculateFinalCoordinates(
-      node.longitude,
-      node.latitude,
-      centroid
-    )
-    const mesh = buildStopMesh(color)
-    mesh.userData = node
-    mesh.position.set(position.x, position.y, position.z)
-    scene.add(mesh)
-
-    graph.edges.get(node).forEach(connectedNode => {
-      const connectedNodePosition = calculateFinalCoordinates(
-        connectedNode.longitude,
-        connectedNode.latitude,
+function createGeospatialVisualization (mbtaGraphs, scene) {
+  const centroid = calculateCentroid(mbtaGraphs.stopGraphs)
+  const stopColor = 0x5555ff
+  const vehicleColor = 0xff1111
+  for (const stopGraph of mbtaGraphs.stopGraphs) {
+    stopGraph.nodes.forEach(node => {
+      const position = calculateProjectedCoordinates(
+        node.longitude,
+        node.latitude,
         centroid
       )
-      const line = buildEdgeLine(color, position, connectedNodePosition)
-      scene.add(line)
+      const mesh = buildStopMesh(stopColor)
+      mesh.userData = node
+      mesh.position.set(position.x, position.y, position.z)
+      scene.add(mesh)
+
+      stopGraph.edges.get(node).forEach(connectedNode => {
+        const connectedNodePosition = calculateProjectedCoordinates(
+          connectedNode.longitude,
+          connectedNode.latitude,
+          centroid
+        )
+        const line = buildEdgeLine(stopColor, position, connectedNodePosition)
+        scene.add(line)
+      })
     })
-  })
+  }
+  for (const vehicleGraph of mbtaGraphs.vehicleGraphs) {
+    vehicleGraph.nodes.forEach(node => {
+      const position = calculateProjectedCoordinates(
+        node.longitude,
+        node.latitude,
+        centroid
+      )
+      const mesh = buildVehicleMesh(vehicleColor)
+      mesh.userData = node
+      mesh.position.set(position.x, position.y, position.z)
+      scene.add(mesh)
+    })
+  }
 }
 
-function drawVehicleGraph (graph, scene, color, centroid) {
-  graph.nodes.forEach(node => {
-    const position = calculateFinalCoordinates(
-      node.longitude,
-      node.latitude,
-      centroid
-    )
-    const mesh = buildVehicleMesh(color)
-    mesh.userData = node
-    mesh.position.set(position.x, position.y, position.z)
-    scene.add(mesh)
-  })
-}
+function createRandomizedVisualization (mbtaGraphs, scene) {}
 
-function render (renderer, scene, camera) {
-  renderer.render(scene, camera)
-  pickHelper.pick(pickPosition, scene, camera)
-  requestAnimationFrame(() => render(renderer, scene, camera))
-}
+function createForceDirectedVisualization (mbtaGraphs, scene) {}
 
+/*
+MAIN
+*/
 function main () {
-  const app = initializeApp()
-
+  const app = initApp()
+  window.addEventListener('mouseout', clearPickPosition)
+  window.addEventListener('mouseleave', clearPickPosition)
   window.addEventListener('mousemove', e =>
     setPickPosition(e, app.renderer.domElement)
   )
-  window.addEventListener('mouseout', clearPickPosition)
-  window.addEventListener('mouseleave', clearPickPosition)
-
-  const centroid = calculateCentroidOfGraphs([
-    redLineGraph,
-    orangeLineGraph,
-    blueLineGraph,
-    greenBLineGraph,
-    greenCLineGraph
-  ])
-
-  drawStopGraph(redLineGraph, app.scene, 0xda291c, centroid)
-  drawVehicleGraph(redVehiclesGraph, app.scene, 0xda291c, centroid)
-
-  drawStopGraph(orangeLineGraph, app.scene, 0xed8b00, centroid)
-  drawVehicleGraph(orangeVehiclesGraph, app.scene, 0xed8b00, centroid)
-
-  drawStopGraph(blueLineGraph, app.scene, 0x003da5, centroid)
-  drawVehicleGraph(blueVehiclesGraph, app.scene, 0x003da5, centroid)
-
-  drawStopGraph(greenBLineGraph, app.scene, `rgb(0, 255, 60)`, centroid)
-  drawVehicleGraph(greenBVehiclesGraph, app.scene, `rgb(0, 255, 60)`, centroid)
-
-  drawStopGraph(greenCLineGraph, app.scene, `rgb(70, 132, 50)`, centroid)
-  drawVehicleGraph(greenCVehiclesGraph, app.scene, `rgb(70, 132, 50)`, centroid)
-
+  createGeospatialVisualization(mbtaGraphs, app.scene)
   requestAnimationFrame(() => render(app.renderer, app.scene, app.camera))
 }
+
 main()
