@@ -103,36 +103,45 @@ MBTA DATA
 /*
 INFO
 */
-const infoText = document.querySelector(`#infoText`)
-const lastUpdateTimeText = document.querySelector(`#lastUpdateTime`)
+const useStaticInfo = true
+
+const selectionInfoText = document.querySelector(`#selectionInfo`)
 let stopCount = 0
 const stopCountText = document.querySelector(`#stopCount`)
 let vehicleCount = 0
 const vehicleCountText = document.querySelector(`#vehicleCount`)
 
 function updateSelectedInfo (node) {
-  //   switch (node.userData.type) {
-  //     case `stop`:
-  //       infoText.textContent = `Longitude: ${node.userData.longitude},
-  //           Latitude: ${node.userData.latitude},
-  //           Name: ${node.userData.id},
-  //           Type: Stop`
-  //       break
-  //     case `vehicle`:
-  //       infoText.textContent = `Longitude: ${node.userData.longitude},
-  //           Latitude: ${node.userData.latitude},
-  //           Name: ${node.userData.id},
-  //           Type: Vehicle`
-  //       break
-  //   }
+  switch (node.userData.type) {
+    case `stop`:
+      selectionInfoText.textContent = `
+            Name: ${node.userData.id} |
+            Type: Stop |
+            Longitude: ${node.userData.longitude} |
+            Latitude: ${node.userData.latitude}`
+      break
+    case `vehicle`:
+      selectionInfoText.textContent = `
+            Name: ${node.userData.id} |
+            Type: Vehicle |
+            Longitude: ${node.userData.longitude} |
+            Latitude: ${node.userData.latitude} |
+            Updated at: ${node.userData.updatedAt}
+            `
+      break
+  }
 }
 
 /*
 STOPS
 */
 async function getMbtaStopInfo (routeFilter) {
-  //   const url = `https://api-v3.mbta.com/stops?filter[route]=${routeFilter}`
-  const url = `./local_mbta_info/stops/${routeFilter}.json`
+  let url
+  if (useStaticInfo) {
+    url = `./static_mbta_info/stops/${routeFilter}.json`
+  } else {
+    // url = `https://api-v3.mbta.com/stops?filter[route]=${routeFilter}`
+  }
   try {
     const response = await fetch(url)
     if (!response.ok) {
@@ -152,6 +161,7 @@ function addStopsToGraph (jsonResult, stopGraph, route, nodeMap) {
     let currentStop
 
     if (!nodeMap.has(stop.id)) {
+      stopCount++
       currentStop = {
         type: 'stop',
         id: stop.id,
@@ -184,12 +194,10 @@ function addStopsToGraph (jsonResult, stopGraph, route, nodeMap) {
 async function buildStopGraph (routeFilters) {
   const stopGraph = new Graph()
   const nodeMap = new Map()
-
   for (const route of routeFilters) {
     const jsonResult = await getMbtaStopInfo(route)
     addStopsToGraph(jsonResult, stopGraph, route, nodeMap)
   }
-
   return stopGraph
 }
 
@@ -197,8 +205,13 @@ async function buildStopGraph (routeFilters) {
 VEHICLES
 */
 async function getMbtaVehicleInfo (routeFilter) {
-  //   const url = `https://api-v3.mbta.com/vehicles?filter[route]=${routeFilter}`
-  const url = `./local_mbta_info/vehicles/Red_Orange_Blue.json`
+  let url
+
+  if (useStaticInfo) {
+    url = `./static_mbta_info/vehicles/Red_Orange_Blue.json`
+  } else {
+    // url = `https://api-v3.mbta.com/vehicles?filter[route]=${routeFilter}`
+  }
   try {
     const response = await fetch(url)
     if (!response.ok) {
@@ -213,12 +226,14 @@ async function getMbtaVehicleInfo (routeFilter) {
 
 function buildVehicleObjects (jsonResult, vehicles) {
   jsonResult.data.forEach(vehicle => {
+    vehicleCount++
     vehicles.push({
       type: `vehicle`,
       id: vehicle.id,
       route: vehicle.relationships.route.data.id,
       longitude: vehicle.attributes.longitude,
-      latitude: vehicle.attributes.latitude
+      latitude: vehicle.attributes.latitude,
+      updatedAt: vehicle.attributes.updated_at
     })
   })
 }
@@ -240,6 +255,10 @@ async function initMbta (routeFilters) {
   console.log(vehicles)
   console.log(`Stop graph:`)
   console.log(stopGraph)
+
+  stopCountText.textContent = `${stopCount} stops`
+  vehicleCountText.textContent = `${vehicleCount} vehicles`
+
   return {
     stopGraph: stopGraph,
     vehicles: vehicles
