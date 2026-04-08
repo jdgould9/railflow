@@ -1,0 +1,1717 @@
+{
+    "data": [
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Beverly Street",
+                "description": null,
+                "latitude": 42.366114,
+                "location_type": 0,
+                "longitude": -71.060067,
+                "municipality": "Boston",
+                "name": "Causeway St @ North Station",
+                "on_street": "Causeway Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "114",
+            "links": {
+                "self": "/stops/114"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=114"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Sudbury Street",
+                "description": null,
+                "latitude": 42.362175,
+                "location_type": 0,
+                "longitude": -71.058498,
+                "municipality": "Boston",
+                "name": "Congress St @ Sudbury St",
+                "on_street": "Congress Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "30203",
+            "links": {
+                "self": "/stops/30203"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=30203"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "North Street",
+                "description": null,
+                "latitude": 42.359546,
+                "location_type": 0,
+                "longitude": -71.057192,
+                "municipality": "Boston",
+                "name": "Congress St opp North St",
+                "on_street": "Congress Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "204",
+            "links": {
+                "self": "/stops/204"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=204"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Water Street",
+                "description": null,
+                "latitude": 42.357732,
+                "location_type": 0,
+                "longitude": -71.057373,
+                "municipality": "Boston",
+                "name": "Devonshire St @ Water St",
+                "on_street": "Devonshire Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "65471",
+            "links": {
+                "self": "/stops/65471"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=65471"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Franklin Street",
+                "description": null,
+                "latitude": 42.35555,
+                "location_type": 0,
+                "longitude": -71.055682,
+                "municipality": "Boston",
+                "name": "Congress St @ Franklin St",
+                "on_street": "Congress Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "16551",
+            "links": {
+                "self": "/stops/16551"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=16551"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Congress Street",
+                "description": null,
+                "latitude": 42.353697,
+                "location_type": 0,
+                "longitude": -71.05337,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Congress St",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "221",
+            "links": {
+                "self": "/stops/221"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=221"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Thompson Place",
+                "description": null,
+                "latitude": 42.35257,
+                "location_type": 0,
+                "longitude": -71.047578,
+                "municipality": "Boston",
+                "name": "Seaport Blvd @ Sleeper St",
+                "on_street": "Seaport Boulevard",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "21599",
+            "links": {
+                "self": "/stops/21599"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=21599"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "D Street Extension",
+                "description": null,
+                "latitude": 42.348896,
+                "location_type": 0,
+                "longitude": -71.039266,
+                "municipality": "Boston",
+                "name": "Northern Ave @ D St",
+                "on_street": "Northern Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "243",
+            "links": {
+                "self": "/stops/243"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=243"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": "Northern Ave and Harbor St, Boston, MA 02210",
+                "at_street": "Harbor Street",
+                "description": "Northern Ave @ Harbor St - Silver Line - SL2 Design Center",
+                "latitude": 42.346634,
+                "location_type": 0,
+                "longitude": -71.035301,
+                "municipality": "Boston",
+                "name": "Northern Ave @ Harbor St",
+                "on_street": "Northern Avenue",
+                "platform_code": null,
+                "platform_name": "Design Center",
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "247",
+            "links": {
+                "self": "/stops/247"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=247"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Tide Street",
+                "description": "Northern Ave @ Tide St - Silver Line - SL2 Design Center",
+                "latitude": 42.34508,
+                "location_type": 0,
+                "longitude": -71.031986,
+                "municipality": "Boston",
+                "name": "Northern Ave @ Tide St",
+                "on_street": "Northern Avenue",
+                "platform_code": null,
+                "platform_name": "Design Center",
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "30249",
+            "links": {
+                "self": "/stops/30249"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=30249"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": null,
+                "latitude": 42.344669,
+                "location_type": 0,
+                "longitude": -71.037379,
+                "municipality": "Boston",
+                "name": "Drydock Ave @ Harbor St",
+                "on_street": null,
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "30256",
+            "links": {
+                "self": "/stops/30256"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=30256"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": null,
+                "latitude": 42.344381,
+                "location_type": 0,
+                "longitude": -71.039016,
+                "municipality": "Boston",
+                "name": "Summer St @ Drydock Ave",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "210",
+            "links": {
+                "self": "/stops/210"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=210"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Causeway Street",
+                "description": null,
+                "latitude": 42.364737,
+                "location_type": 0,
+                "longitude": -71.062198,
+                "municipality": "Boston",
+                "name": "Portland St @ Causeway St",
+                "on_street": "Portland Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "113",
+            "links": {
+                "self": "/stops/113"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=113"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Medford Street",
+                "description": null,
+                "latitude": 42.366283,
+                "location_type": 0,
+                "longitude": -71.059491,
+                "municipality": "Boston",
+                "name": "Causeway St @ Medford St",
+                "on_street": "Causeway Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "118",
+            "links": {
+                "self": "/stops/118"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=118"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Battery Wharf",
+                "description": null,
+                "latitude": 42.366409,
+                "location_type": 0,
+                "longitude": -71.051526,
+                "municipality": "Boston",
+                "name": "Commercial St @ Battery St",
+                "on_street": "Commercial Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "233",
+            "links": {
+                "self": "/stops/233"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=233"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Fleet Street",
+                "description": null,
+                "latitude": 42.363939,
+                "location_type": 0,
+                "longitude": -71.051147,
+                "municipality": "Boston",
+                "name": "Commercial St @ Fleet St",
+                "on_street": "Commercial Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "234",
+            "links": {
+                "self": "/stops/234"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=234"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Commercial Wharf",
+                "description": null,
+                "latitude": 42.362334,
+                "location_type": 0,
+                "longitude": -71.051095,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Commercial Wharf",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "30235",
+            "links": {
+                "self": "/stops/30235"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=30235"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Central Street",
+                "description": null,
+                "latitude": 42.359022,
+                "location_type": 0,
+                "longitude": -71.052369,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Central St",
+                "on_street": "John F. Fitzgerald Surface Road",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "236",
+            "links": {
+                "self": "/stops/236"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=236"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Pearl Street",
+                "description": null,
+                "latitude": 42.354588,
+                "location_type": 0,
+                "longitude": -71.053278,
+                "municipality": "Boston",
+                "name": "Purchase St @ Pearl St",
+                "on_street": "Purchase Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "2116",
+            "links": {
+                "self": "/stops/2116"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=2116"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Atlantic Avenue",
+                "description": null,
+                "latitude": 42.352253,
+                "location_type": 0,
+                "longitude": -71.054774,
+                "municipality": "Boston",
+                "name": "Summer St @ South Station - Red Line entrance",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "6564",
+            "links": {
+                "self": "/stops/6564"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=6564"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Melcher Street",
+                "description": null,
+                "latitude": 42.350208,
+                "location_type": 0,
+                "longitude": -71.05039,
+                "municipality": "Boston",
+                "name": "Summer St @ Melcher St",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "888",
+            "links": {
+                "self": "/stops/888"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=888"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": null,
+                "latitude": 42.34886,
+                "location_type": 0,
+                "longitude": -71.04753,
+                "municipality": "Boston",
+                "name": "350 Summer St",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "88801",
+            "links": {
+                "self": "/stops/88801"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=88801"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": null,
+                "latitude": 42.346836,
+                "location_type": 0,
+                "longitude": -71.043514,
+                "municipality": "Boston",
+                "name": "Summer St opp WTC Ave",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "889",
+            "links": {
+                "self": "/stops/889"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=889"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "D Street",
+                "description": null,
+                "latitude": 42.345781,
+                "location_type": 0,
+                "longitude": -71.04118,
+                "municipality": "Boston",
+                "name": "Summer St @ D St",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "212",
+            "links": {
+                "self": "/stops/212"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=212"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "World Trade Center Road",
+                "description": null,
+                "latitude": 42.347405,
+                "location_type": 0,
+                "longitude": -71.044125,
+                "municipality": "Boston",
+                "name": "Summer St @ WTC Ave",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "890",
+            "links": {
+                "self": "/stops/890"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=890"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": null,
+                "latitude": 42.34876,
+                "location_type": 0,
+                "longitude": -71.04675,
+                "municipality": "Boston",
+                "name": "400 Summer St",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "89001",
+            "links": {
+                "self": "/stops/89001"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=89001"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Melcher Street",
+                "description": null,
+                "latitude": 42.350545,
+                "location_type": 0,
+                "longitude": -71.050865,
+                "municipality": "Boston",
+                "name": "Summer St opp Melcher St",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "891",
+            "links": {
+                "self": "/stops/891"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=891"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Atlantic Avenue",
+                "description": null,
+                "latitude": 42.352649,
+                "location_type": 0,
+                "longitude": -71.055136,
+                "municipality": "Boston",
+                "name": "Summer St @ Atlantic Ave",
+                "on_street": "Summer Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "892",
+            "links": {
+                "self": "/stops/892"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=892"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Northern Avenue",
+                "description": null,
+                "latitude": 42.354896,
+                "location_type": 0,
+                "longitude": -71.051128,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Seaport Blvd.",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "222",
+            "links": {
+                "self": "/stops/222"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=222"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "High Street",
+                "description": null,
+                "latitude": 42.356271,
+                "location_type": 0,
+                "longitude": -71.050665,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Rowes Wharf",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "223",
+            "links": {
+                "self": "/stops/223"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=223"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "India Wharf",
+                "description": null,
+                "latitude": 42.358889,
+                "location_type": 0,
+                "longitude": -71.051491,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Milk St",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "30233",
+            "links": {
+                "self": "/stops/30233"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=30233"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": null,
+                "description": null,
+                "latitude": 42.359101,
+                "location_type": 0,
+                "longitude": -71.051566,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ State St-Marriott Hotel",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "224",
+            "links": {
+                "self": "/stops/224"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=224"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Mercantile Street",
+                "description": null,
+                "latitude": 42.360797,
+                "location_type": 0,
+                "longitude": -71.052557,
+                "municipality": "Boston",
+                "name": "Atlantic Ave @ Atlantic Ave",
+                "on_street": "Atlantic Avenue",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "225",
+            "links": {
+                "self": "/stops/225"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=225"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Hanover Street",
+                "description": null,
+                "latitude": 42.367193,
+                "location_type": 0,
+                "longitude": -71.052338,
+                "municipality": "Boston",
+                "name": "Commercial St @ Hanover St",
+                "on_street": "Commercial Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "230",
+            "links": {
+                "self": "/stops/230"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=230"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Hull Street",
+                "description": null,
+                "latitude": 42.367838,
+                "location_type": 0,
+                "longitude": -71.057329,
+                "municipality": "Boston",
+                "name": "Commercial St opp Hull St",
+                "on_street": "Commercial Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 0
+            },
+            "id": "231",
+            "links": {
+                "self": "/stops/231"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=231"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": "Black Falcon Ave and Design Center Pl, Boston, MA 02210",
+                "at_street": "Design Center Place",
+                "description": "Drydock Ave @ Design Center Place - Silver Line - SL2 South Station",
+                "latitude": 42.3446,
+                "location_type": 0,
+                "longitude": -71.034476,
+                "municipality": "Boston",
+                "name": "Drydock Ave @ Design Center Place",
+                "on_street": "Drydock Avenue",
+                "platform_code": null,
+                "platform_name": "South Station",
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "31255",
+            "links": {
+                "self": "/stops/31255"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=31255"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": "Northern Ave and Tide St, Boston, MA 02210",
+                "at_street": "Tide Street",
+                "description": "Northern Ave @ Tide St - Silver Line - SL2 South Station",
+                "latitude": 42.345192,
+                "location_type": 0,
+                "longitude": -71.031996,
+                "municipality": "Boston",
+                "name": "Northern Ave @ Tide St",
+                "on_street": "Northern Avenue",
+                "platform_code": null,
+                "platform_name": "South Station",
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "31257",
+            "links": {
+                "self": "/stops/31257"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=31257"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Harbor Street",
+                "description": "Northern Ave opp Harbor St - Silver Line - SL2 South Station",
+                "latitude": 42.346538,
+                "location_type": 0,
+                "longitude": -71.034878,
+                "municipality": "Boston",
+                "name": "Northern Ave opp Harbor St",
+                "on_street": "Northern Avenue",
+                "platform_code": null,
+                "platform_name": "South Station",
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "31256",
+            "links": {
+                "self": "/stops/31256"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=31256"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "East Service Road",
+                "description": null,
+                "latitude": 42.351012,
+                "location_type": 0,
+                "longitude": -71.043647,
+                "municipality": "Boston",
+                "name": "Seaport Blvd @ Pier 4 Blvd",
+                "on_street": "Seaport Boulevard",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "214",
+            "links": {
+                "self": "/stops/214"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=214"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Thompson Place",
+                "description": null,
+                "latitude": 42.352561,
+                "location_type": 0,
+                "longitude": -71.046914,
+                "municipality": "Boston",
+                "name": "Seaport Blvd @ Fan Pier Blvd",
+                "on_street": "Seaport Boulevard",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "11599",
+            "links": {
+                "self": "/stops/11599"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=11599"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "High Street",
+                "description": null,
+                "latitude": 42.355395,
+                "location_type": 0,
+                "longitude": -71.054079,
+                "municipality": "Boston",
+                "name": "Pearl St @ High St",
+                "on_street": "Pearl Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "12891",
+            "links": {
+                "self": "/stops/12891"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=12891"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Congress Street",
+                "description": null,
+                "latitude": 42.357495,
+                "location_type": 0,
+                "longitude": -71.056251,
+                "municipality": "Boston",
+                "name": "Pearl St @ Congress St",
+                "on_street": "Post Office Square",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "11891",
+            "links": {
+                "self": "/stops/11891"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=11891"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "State Street",
+                "description": null,
+                "latitude": 42.358789,
+                "location_type": 0,
+                "longitude": -71.056733,
+                "municipality": "Boston",
+                "name": "Congress St @ State St",
+                "on_street": "Congress Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "190",
+            "links": {
+                "self": "/stops/190"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=190"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "LocalBus",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "North Street",
+                "description": null,
+                "latitude": 42.360387,
+                "location_type": 0,
+                "longitude": -71.057129,
+                "municipality": "Boston",
+                "name": "Congress St @ North St",
+                "on_street": "Congress Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "191",
+            "links": {
+                "self": "/stops/191"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=191"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "ExpressBus-Downtown",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        },
+        {
+            "attributes": {
+                "address": null,
+                "at_street": "Hanover Street",
+                "description": null,
+                "latitude": 42.361847,
+                "location_type": 0,
+                "longitude": -71.057724,
+                "municipality": "Boston",
+                "name": "Congress St @ Haymarket Sta",
+                "on_street": "Congress Street",
+                "platform_code": null,
+                "platform_name": null,
+                "vehicle_type": 3,
+                "wheelchair_boarding": 1
+            },
+            "id": "117",
+            "links": {
+                "self": "/stops/117"
+            },
+            "relationships": {
+                "facilities": {
+                    "links": {
+                        "related": "/facilities/?filter[stop]=117"
+                    }
+                },
+                "parent_station": {
+                    "data": null
+                },
+                "zone": {
+                    "data": {
+                        "id": "ExpressBus-Downtown",
+                        "type": "zone"
+                    }
+                }
+            },
+            "type": "stop"
+        }
+    ],
+    "jsonapi": {
+        "version": "1.0"
+    }
+}

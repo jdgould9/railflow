@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "three": "^0.183.1"
+    "three": "^0.183.1",
+    "time-stamp": "^2.2.0"
   },
   "devDependencies": {
     "vite": "^7.3.1"
