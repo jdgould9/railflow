@@ -2,9 +2,17 @@ body{
     margin:0;
     background-color: rgb(24, 22, 31)
 }
-p{
-    font-size:11pt;
+p,ul{
+    font-size:9pt;
     text-align: center;
     line-height: 13px;
     color: rgb(212, 209, 228)
+}
+h1{
+    color: rgb(212, 209, 228);
+    text-align: center;
+}
+li{
+    line-height: 45px;
+    text-align: left;
 }

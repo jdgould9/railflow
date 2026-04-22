@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>railflow
-    </title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <title>railflow</title>
+    <link rel="icon" type="image/x-icon" href="/resources/img/icon.ico" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img src="./resources/img/logo.png" alt="logo">
-    <button id="updateVehicles">Update vehicles</button>
-    <button id="liveUpdates">Enable/Disable live updates</button>
-    <p>
-      <span id="stopCount"></span>
-      <span id="vehicleCount"></span>
-      <span id="lastUpdatedTime"></span>
-    </p>
-    <p id="selectionInfo">selection_info_text</p>
-    <script type="module" src="/main.js"></script>
+    <header>
+      <img src="./resources/img/logo.png" alt="logo" />
+    </header>
+
+    <button id="liveUpdates">Enable live updates</button>
+    <select id="routeFilterSelection" multiple autocomplete="off">
+      <option disabled>Route filters</option>
+    </select>
+    <button id="routeFilterButton">Filter vehicles by route</button>
+
+    <p id="generalInfoText">placeholder general info text</p>
+    <p id="selectionInfoText">placeholder selection info text</p>
+
+    <div id="threeJsWindow"></div>
+
+    <div id="alerts">
+      <h1>Alerts:</p>
+      <ul id="alertsList"></ul>
+    </div>
+
+    <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>
-    

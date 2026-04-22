@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "polyline-encoded": "^0.0.9",
     "three": "^0.183.1",
-    "time-stamp": "^2.2.0"
+    "time-stamp": "^2.2.0",
+    "troika-three-text": "^0.52.4"
   },
   "devDependencies": {
     "vite": "^7.3.1"
