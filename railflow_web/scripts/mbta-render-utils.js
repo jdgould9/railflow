@@ -64,7 +64,6 @@ export function buildVehicleMeshGroup (vehicles, routes, centroid) {
 export function buildVehicleMesh (vehicle, routes, centroid) {
   const geometry = new THREE.ConeGeometry(0.03, 0.07, 3)
   const color = new THREE.Color(`#${routes.get(vehicle.route).color}`)
-  color.addScalar(0.1)
   const material = new THREE.MeshBasicMaterial({ color: color })
   const mesh = new THREE.Mesh(geometry, material)
 

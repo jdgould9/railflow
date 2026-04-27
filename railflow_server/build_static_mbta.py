@@ -4,32 +4,35 @@ build_static_mbta.py
 constructs static mbta info into .json format to serve on railflow web
 run periodically to keep static info up to date
 '''
-
-# TODO: Create virtual environment for python
 # TODO: Add type hints
 # TODO: Add error handling  
-    # Including but not limited to:
-        # Bad API response
-        # Missing keys for json objects (currently assumed certain keys will always exist)
-# TODO: Use API key
-# TODO: Pandas DF for better performance?
-# TODO: Add more parameters to customize run
+# Including but not limited to:
+# Bad API response
+# Missing keys for json objects (currently assumes certain keys will always exist)
 
 import requests
+from requests.auth import HTTPBasicAuth
 import json
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+MBTA_API_KEY = os.getenv('MBTA_API_KEY')
 
 def fetch(url, payload=None):
+    auth = HTTPBasicAuth('apikey', MBTA_API_KEY)
     if payload:
-        response = requests.get(url, params=payload)
+        response = requests.get(url, params=payload, auth=auth)
     else:
         response = requests.get(url)
-    print(response)
     return response.json()
 
 def save(jsonDict, filename) -> None:
     with open(f'../railflow_web/static_mbta/{filename}.json', 'w') as file:
         json.dump(jsonDict, file)
+        print('Successful build')
+        print(f'Saved to ../railflow_web/static_mbta/{filename}.json')
 
 def get_lines(line_ids):
     line_params = {

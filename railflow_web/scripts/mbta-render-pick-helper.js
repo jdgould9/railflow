@@ -3,11 +3,12 @@ import * as RenderUtils from './mbta-render-utils'
 import { Text } from 'troika-three-text'
 import * as mbtaUi from './mbta-ui'
 
-// TODO:
+// TODO: PickHelper clicking
 // Clicking should call mbta-ui updateSelectionInfo
 // Clicking should persist highlight & preview text
 // Clicking off (onto null or another mesh) should adjust accordingly
 // Clicked mesh should persist across live updates
+//FIXME: Picking still occurs under left and right control panels (CSS issue or PickHelper issue?)
 export class PickHelper {
   constructor () {
     this.raycaster = new THREE.Raycaster()

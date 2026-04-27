@@ -77,18 +77,23 @@ export class MbtaRender {
 
 function getApp () {
   const scene = new THREE.Scene()
-  scene.background = new THREE.Color(`rgb(37, 35, 48)`)
-  const camera = new THREE.PerspectiveCamera(
-    50,
-    window.innerWidth / window.innerHeight,
-    0.05,
-    100
-  )
-  camera.position.set(0, 0, 3)
-  const renderer = new THREE.WebGLRenderer({ antialias: true })
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  scene.background = new THREE.Color(0x252330)
+
   const threeJsWindow = document.getElementById(`threeJsWindow`)
+  const width = threeJsWindow.clientWidth
+  const height = threeJsWindow.clientHeight
+
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.05, 100)
+  camera.position.set(0, 0, 10)
+
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    preserveDrawingBuffer: true
+  })
+
+  renderer.setSize(width, height)
   threeJsWindow.appendChild(renderer.domElement)
+
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.update()
 

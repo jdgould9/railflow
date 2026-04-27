@@ -3,30 +3,181 @@
   <head>
     <meta charset="utf-8" />
     <title>railflow</title>
-    <link rel="icon" type="image/x-icon" href="/resources/img/icon.ico" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/resources/img/railflow_icon.ico"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <header>
-      <img src="./resources/img/logo.png" alt="logo" />
-    </header>
+    <!-- Layout -->
+    <div class="layout">
+      <!-- Left panel -->
+      <aside id="leftPanel" class="panel">
+        <!-- Logo -->
+        <header>
+          <a href=""
+            ><img
+              id="logoImage"
+              src="resources/img/railflow_logo.svg"
+              alt="railflow logo"
+          /></a>
+          <h1 id="logoText">railflow</h1>
+        </header>
 
-    <button id="liveUpdates">Enable live updates</button>
-    <select id="routeFilterSelection" multiple autocomplete="off">
-      <option disabled>Route filters</option>
-    </select>
-    <button id="routeFilterButton">Filter vehicles by route</button>
+        <nav>
+          <!-- Left upper controls -->
+          <div class="controls">
+            <ul>
+              <li>
+                <button id="toggleLiveUpdates">
+                  <img
+                    src="resources/img/controls/toggle_live_updates.svg"
+                    alt="Toggle live updates"
+                    title="Toggle live updates"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="search">
+                  <img
+                    src="resources/img/controls/search.svg"
+                    alt="Search"
+                    title="Search"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="filters">
+                  <img
+                    src="resources/img/controls/filters.svg"
+                    alt="Filters"
+                    title="Filters"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="mapLayers">
+                  <img
+                    src="resources/img/controls/map_layers.svg"
+                    alt="Map layers"
+                    title="Map layers"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="bookmarks">
+                  <img
+                    src="resources/img/controls/bookmarks.svg"
+                    alt="Bookmarks"
+                    title="Bookmarks"
+                  />
+                </button>
+              </li>
+            </ul>
+          </div>
 
-    <p id="generalInfoText">placeholder general info text</p>
-    <p id="selectionInfoText">placeholder selection info text</p>
+          <!-- Left lower controls -->
+          <div class="controls">
+            <ul>
+              <li>
+                <button id="screenshot">
+                  <img
+                    src="resources/img/controls/screenshot.svg"
+                    alt="Screenshot"
+                    title="Screenshot"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="download">
+                  <img
+                    src="resources/img/controls/download.svg"
+                    alt="Download"
+                    title="Download"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="toggleDarkLightMode">
+                  <img
+                    src="resources/img/controls/toggle_darkmode_lightmode.svg"
+                    alt="Toggle darkmode/lightmode"
+                    title="Toggle darkmode/lightmode"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="toggleFullscreen">
+                  <img
+                    src="resources/img/controls/toggle_fullscreen.svg"
+                    alt="Toggle fullscreen"
+                    title="Toggle fullscreen"
+                  />
+                </button>
+              </li>
+              <li>
+                <button id="aboutRailflow">
+                  <img
+                    src="resources/img/controls/about.svg"
+                    alt="About railflow"
+                    title="About railflow"
+                  />
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
 
-    <div id="threeJsWindow"></div>
+      <!-- ThreeJS app -->
+      <main id="threeJsWindow"></main>
 
-    <div id="alerts">
-      <h1>Alerts:</p>
-      <ul id="alertsList"></ul>
+      <!-- Right panel -->
+      <aside id="rightPanel" class="panel">
+        <section id="selectedInformation">
+          <h2>Selected Information</h2>
+          <p id="selectedInformationText">
+            Select a stop/vehicle for more information
+          </p>
+          <button id="bookmarkSelection">
+            <img
+              src="resources/img/controls/bookmark_selection.svg"
+              alt="Bookmark selection"
+              title="Bookmark selection"
+            />
+          </button>
+        </section>
+        <section id="generalInformation">
+          <h2>General Information</h2>
+          <p id="generalInformationText"></p>
+        </section>
+        <section id="alerts">
+          <h2>Alerts</h2>
+          <ul id="alertsList"></ul>
+        </section>
+      </aside>
     </div>
 
+    <!-- Footer -->
+    <!-- <footer>
+      railflow.live uses
+      <a href="https://www.mbta.com/developers">publicly available data</a>
+      provided by the
+      <a href="https://www.mbta.com/"
+        >Massachusetts Bay Transportation Authority (MBTA)</a
+      >
+      but is not affiliated with, endorsed by, or sponsored by the MBTA.
+    </footer> -->
     <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>

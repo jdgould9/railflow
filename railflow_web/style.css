@@ -1,18 +1,193 @@
-body{
-    margin:0;
-    background-color: rgb(24, 22, 31)
+/* Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-p,ul{
-    font-size:9pt;
-    text-align: center;
-    line-height: 13px;
-    color: rgb(212, 209, 228)
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
-h1{
-    color: rgb(212, 209, 228);
-    text-align: center;
+body {
+  line-height: 1;
 }
-li{
-    line-height: 45px;
-    text-align: left;
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ------DOCUMENT------ */
+
+body {
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  color: #e5e2f4;
+}
+
+/* ------LEFT PANEL------ */
+
+/* Logo */
+
+#logoImage {
+  width: 50px;
+  height: auto;
+}
+
+#logoText {
+  font-family: 'Inter', sans-serif;
+}
+
+#leftPanel {
+  background-color: #2b2b2d;
+  width: 10%;
+  padding: 10px;
+}
+
+#leftPanel ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#leftPanel button {
+  width: 55px;
+  height: 55px;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #5b5962;
+  border: 0;
+  border-radius: 7px;
+  padding: 3px;
+}
+
+button:hover {
+  background-color: #878492;
+  border-color: #878492;
+  transform: none;
+}
+
+#rightPanel {
+  background-color: #2b2b2d;
+  width: 20%;
+  padding: 10px;
+}
+
+#threeJsWindow {
+  flex: 1;
+  background-color: #2b2b2d;
 }

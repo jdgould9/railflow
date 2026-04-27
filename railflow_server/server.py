@@ -3,12 +3,12 @@ server.py
 -
 retrieves dynamic mbta info
 serves dynamic mbta info
-periodically updates mbta model
+periodically runs build_static_mbta.py to update model
 '''
-# TODO: Clean up
 # TODO: Add error handling
 # TODO: Vehicle & alert fetching should be streams?
 # TODO: Add cron job to update model
+# TODO: Add route ids to env?
 
 from flask import Flask, jsonify
 from flask_apscheduler import APScheduler
@@ -57,7 +57,7 @@ def fetch_alerts():
     return routes
 
 latest_vehicles = fetch_vehicles()
-@scheduler.task('interval', id='update_vehicles', seconds=4.5, misfire_grace_time=60)
+@scheduler.task('interval', id='update_vehicles', seconds=4, misfire_grace_time=60)
 def update_vehicles():
     global latest_vehicles
     latest_vehicles = fetch_vehicles()
@@ -76,9 +76,12 @@ def get_vehicles():
 def get_alerts():
     return jsonify(latest_alerts)
 
-# @scheduler.task('cron', id='update_model', hour=0)
-# def update_model():
-#     pass
+@scheduler.task('cron', id='update_model', hour=0)
+def update_model():
+    # create updated model
+    # update model.json that's part of railflow_web's resources
+    # this won't work for deployment but this works for concept
+    pass
 
 scheduler.start()
 

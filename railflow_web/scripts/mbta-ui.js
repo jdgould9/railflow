@@ -1,3 +1,4 @@
+// FIXME: Alerts should be ordered by severity
 const alertsList = document.getElementById(`alertsList`)
 export function updateAlertInfo (mbtaData) {
   alertsList.innerHTML = ``
@@ -14,43 +15,22 @@ export function updateAlertInfo (mbtaData) {
   })
 }
 
-const routeFilterSelection = document.getElementById(`routeFilterSelection`)
-export function populateRouteFilters (mbtaData) {
-  mbtaData.routeIds.forEach(rId => {
-    const routeFilterItem = document.createElement(`option`)
-    routeFilterItem.value = rId
-    routeFilterItem.textContent = rId
-    routeFilterItem.selected = true
-    routeFilterSelection.appendChild(routeFilterItem)
-  })
-}
-
-// TODO:
-// Implement route filtering
-const filterVehiclesByRouteButton = document.getElementById(`routeFilterButton`)
-filterVehiclesByRouteButton.addEventListener(`click`, () => {
-  const selectedRouteFilters = []
-  for (const o of routeFilterSelection.options) {
-    if (o.selected) {
-      selectedRouteFilters.push(o.value)
-    }
-  }
-})
-
-const generalInfoText = document.getElementById(`generalInfoText`)
+const generalInfoText = document.getElementById(`generalInformationText`)
 export function updateGeneralInfo (mbtaData) {
-  generalInfoText.textContent = `${mbtaData.vehicles.size} vehicles |
-   ${mbtaData.stops.size} stops |
+  generalInformationText.textContent = `${mbtaData.vehicles.size} vehicles |
+
    Last update: ${mbtaData.lastUpdatedTime}  `
 }
 
-// TODO:
+// FIXME: Live selectionInfoText updating
 // selectionInfoText should update as live updates come in (track currently selected meshes userData?)
-const selectionInfoText = document.getElementById(`selectionInfoText`)
+const selectedInformationText = document.getElementById(
+  `selectedInformationText`
+)
 export function updateSelectionInfo (userData) {
   switch (userData.type) {
     case 'vehicle':
-      selectionInfoText.textContent = `Vehicle |
+      selectedInformationText.textContent = `Vehicle |
         ID: ${userData.id} |
         Route: ${userData.route} |
         Latitude: ${userData.latitude} |
@@ -59,7 +39,7 @@ export function updateSelectionInfo (userData) {
         Updated at: ${userData.updatedAt}`
       break
     case 'stop':
-      selectionInfoText.textContent = `Stop |
+      selectedInformationText.textContent = `Stop |
       ID: ${userData.id} |
       Name: ${userData.name} |
       Address: ${userData.address} |
